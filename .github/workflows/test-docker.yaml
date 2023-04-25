@@ -1,0 +1,27 @@
+---
+name: test-docker
+
+on: [workflow_dispatch]
+
+jobs:
+  test-docker:
+    runs-on: 'ubuntu-20.04'
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Test change work directory
+      working-directory: test_package
+      run: |
+          pwd
+          python test.py
+
+    - name: Test docker command
+      run: |
+          pwd
+          docker
