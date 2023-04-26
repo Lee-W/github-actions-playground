@@ -35,5 +35,5 @@ jobs:
     - name: echo input
       run: |
           GIT_REV=$(jq -r '.inputs.git_rev' $GITHUB_EVENT_PATH)
-          echo "::add-mask::$MY_SECRET"
+          echo "::add-mask::$GIT_REV"
           echo ${{ github.event.inputs.git_rev }}
