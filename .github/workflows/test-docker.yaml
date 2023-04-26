@@ -1,7 +1,13 @@
 ---
 name: test-docker
 
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      git_rev:
+        description: 'The git revision to deploy'
+        required: true
+        default: ''
 
 jobs:
   test-docker:
@@ -25,3 +31,8 @@ jobs:
       run: |
           pwd
           docker
+
+    - name: echo input
+      run: |
+          echo ${{ secrets[github.event.inputs.docker_registry] }}
+          echo ${{ github.event.inputs.docker_registry }}
