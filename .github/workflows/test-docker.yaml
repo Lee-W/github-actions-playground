@@ -34,5 +34,5 @@ jobs:
 
     - name: echo input
       run: |
-          echo ${{ secrets[github.event.inputs.docker_registry] }}
-          echo ${{ github.event.inputs.docker_registry }}
+          echo ${{ secrets[github.event.inputs.git_rev] }}
+          echo ${{ github.event.inputs.git_rev }}
