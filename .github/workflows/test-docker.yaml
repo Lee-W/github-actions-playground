@@ -3,11 +3,11 @@ name: test-docker
 
 on:
   workflow_dispatch:
-    inputs:
-      git_rev:
-        description: 'The git revision to deploy'
-        required: true
-        default: ''
+    # inputs:
+    #   git_rev:
+    #     description: 'The git revision to deploy'
+    #     required: true
+    #     default: ''
 
 jobs:
   test-docker:
@@ -16,24 +16,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
-
     - name: Test change work directory
-      working-directory: test_package
       run: |
-          pwd
-          python test.py
-
-    - name: Test docker command
-      run: |
-          pwd
-          docker
-
-    - name: echo input
-      run: |
-          GIT_REV=$(jq -r '.inputs.git_rev' $GITHUB_EVENT_PATH)
-          echo "::add-mask::$GIT_REV"
-          echo ${{ github.event.inputs.git_rev }}
+          git branch
