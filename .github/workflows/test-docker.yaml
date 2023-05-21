@@ -24,7 +24,7 @@ jobs:
     runs-on: 'ubuntu-20.04'
     if: |
       always() &&
-      needs.job-1.result == "success"
+      needs.job-1.result == 'success'
     steps:
     - name: step 1
       id: step-1
