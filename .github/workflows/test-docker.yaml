@@ -30,7 +30,7 @@ jobs:
     - name: step 1
       id: step-1
       run: |
-        if [ ${{ inputs.git_rev }} == '' ]; then
+        if [ '${{ inputs.git_rev }}'' == '' ]; then
           echo "git_rev=${{ needs.job-1.outputs.git_rev }}" >> $GITHUB_OUTPUT
         else
           echo "git_rev=${{ inputs.git_rev }}" >> $GITHUB_OUTPUT
