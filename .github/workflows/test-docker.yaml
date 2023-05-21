@@ -18,13 +18,14 @@ jobs:
       id: step-1
       run: |
         echo "git_rev=from-first-step" >> $GITHUB_OUTPUT
+    outputs:
+      git_rev: ${{ steps.step-1.outputs.git_rev }}
 
   job-2:
     needs: job-1
     runs-on: 'ubuntu-20.04'
     if: |
-      always() &&
-      needs.job-1.result == 'success'
+      always()
     steps:
     - name: step 1
       id: step-1
