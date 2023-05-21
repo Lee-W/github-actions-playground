@@ -3,19 +3,30 @@ name: test-docker
 
 on:
   workflow_dispatch:
-    # inputs:
-    #   git_rev:
-    #     description: 'The git revision to deploy'
-    #     required: true
-    #     default: ''
+    inputs:
+      git_rev:
+        description: 'The git revision to deploy'
+        required: false
+        default: ''
 
 jobs:
-  test-docker:
+  job-1:
     runs-on: 'ubuntu-20.04'
-
+    if: ${{ input.git_rev == '' }}
     steps:
-    - uses: actions/checkout@v3
-
-    - name: Test change work directory
+    - name: step 1
+      id: step-1
       run: |
-          git branch
+        echo "git_rev=from-first-step" >> $GITHUB_OUTPUT
+
+  job-2:
+    needs: job-1
+    runs-on: 'ubuntu-20.04'
+    if: |
+      always() &&
+      needs.job-1.result == "success"
+    stesp:
+    - name: step 1
+      id: step-1
+      run: |
+        echo ${{ input.git_rev if input.git_rev != '' else needs.job-1.git_rev}}
