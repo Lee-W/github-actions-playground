@@ -12,7 +12,7 @@ on:
 jobs:
   job-1:
     runs-on: 'ubuntu-20.04'
-    if: ${{ input.git_rev == '' }}
+    if: ${{ inputs.git_rev == '' }}
     steps:
     - name: step 1
       id: step-1
