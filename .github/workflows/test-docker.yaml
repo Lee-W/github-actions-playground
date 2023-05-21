@@ -46,3 +46,5 @@ jobs:
       - name: step 1
         run: |
           echo ${{ needs.job-2.outputs.git_rev }}
+          echo ${{ needs.job-2.outputs }}
+          echo ${{ needs.job-2 }}
