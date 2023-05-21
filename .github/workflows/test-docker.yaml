@@ -29,4 +29,4 @@ jobs:
     - name: step 1
       id: step-1
       run: |
-        echo ${{ input.git_rev if input.git_rev != '' else needs.job-1.git_rev}}
+        echo ${{ inputs.git_rev if inputs.git_rev != '' else needs.job-1.git_rev}}
