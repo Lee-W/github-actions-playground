@@ -27,4 +27,4 @@ jobs:
         run: |
           touch test
           git add .
-          git push origin main
+          git push origin
