@@ -12,6 +12,12 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Setup Github Actions git user
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Actions"
+
+
       - name: Tag and push tag for triggering release
         run: |
           git tag test
