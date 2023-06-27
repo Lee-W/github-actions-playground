@@ -9,8 +9,8 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@v3
-        # with:
-          # token: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Tag and push tag for triggering release
         run: |
