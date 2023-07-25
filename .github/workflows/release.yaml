@@ -8,12 +8,12 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   trigger-release-process:
-    # if: github.event.pull_request.merged == true && startswith(github.event.head_commit.message, 'Release ')
+    if: github.event.pull_request.merged == true && startswith(github.event.commits[0].message, 'Release ')
     runs-on: ubuntu-latest
     steps:
       - name: Check out
         run: |
           echo ${{ github.event.pull_request.merged }}
           echo ${{ github.event.pull_request.merged == true }}
-          echo ${{ github.event.head_commit.message }}
-          echo ${{ startswith(github.event.head_commit.message, 'Release ') }}
+          echo ${{ github.event.commits[0].message }}
+          echo ${{ startswith(github.event.commits[0].message, 'Release ') }}
