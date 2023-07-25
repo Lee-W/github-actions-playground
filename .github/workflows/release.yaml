@@ -24,6 +24,6 @@ jobs:
           fi
 
       - name: Skip
-        if: steps.check_head_commit_message.outputs.validate_release_commit == "True"
+        if: steps.check_head_commit_message.outputs.validate_release_commit == 'True'
         run: |
           echo no sip
