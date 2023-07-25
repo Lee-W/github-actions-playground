@@ -15,7 +15,7 @@ jobs:
         id: check_head_commit_message
         continue-on-error: true
         run: |
-          git ss
+          git status
           if [ $? -eq 1 ]
           then
             echo "valid_release_message=False" >> $GITHUB_OUTPUT
