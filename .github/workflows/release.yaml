@@ -1,0 +1,16 @@
+---
+name: Trigger release and bump version
+
+on:  # yamllint disable-line rule:truthy
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  trigger-release-process:
+    if: github.event.pull_request.merged == true && startswith(github.event.head_commit.message, 'Release ')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        run: |
+          echo "succeeded"
