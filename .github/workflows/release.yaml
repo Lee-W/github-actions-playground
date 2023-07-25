@@ -8,7 +8,7 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   trigger-release-process:
-    if: github.event.pull_request.merged == true && startswith(github.event.commits[0].message, 'Release ')
+    # if: github.event.pull_request.merged == true && startswith(github.event.commits[0].message, 'Release ')
     runs-on: ubuntu-latest
     steps:
       - name: Check out
