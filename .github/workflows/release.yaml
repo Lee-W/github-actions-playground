@@ -15,5 +15,5 @@ jobs:
         run: |
           echo ${{ github.event.pull_request.merged }}
           echo ${{ github.event.pull_request.merged == true }}
-          echo ${{ github.event.commits[0].message }}
-          echo ${{ startswith(github.event.commits[0].message, 'Release ') }}
+          echo ${{ github.event.pull_request.head.message }}
+          echo ${{ startswith(github.event.pull_request.head.message, 'Release ') }}
