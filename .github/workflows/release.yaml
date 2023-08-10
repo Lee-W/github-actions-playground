@@ -1,29 +1,24 @@
 ---
-name: Trigger release and bump version
+name: Create branch
 
 on:  # yamllint disable-line rule:truthy
-  pull_request:
-    types:
-      - closed
+  workflow_dispatch:
 
 jobs:
-  trigger-release-process:
-    if: github.event.pull_request.merged == true
+  create_branch:
     runs-on: ubuntu-latest
     steps:
-      - name: Check head commit message
-        id: check_head_commit_message
-        continue-on-error: true
-        run: |
-          git status
-          if [ $? -eq 1 ]
-          then
-            echo "valid_release_message=False" >> $GITHUB_OUTPUT
-          else
-            echo "valid_release_message=True" >> $GITHUB_OUTPUT
-          fi
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Skip
-        if: ${{ steps.check_head_commit_message.outputs.validate_release_commit == 'True' }}
+      - name: Create branch
+        id: create_branch
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          echo no sip
+          touch tests
+          git add tests
+          git checkout -b new-branch
+          git commit -m "test"
+          git push origin new-branch
+          gh pr create --title "test" --fill
