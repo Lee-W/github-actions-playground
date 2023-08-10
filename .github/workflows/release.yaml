@@ -6,6 +6,7 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   create_branch:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
