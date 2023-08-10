@@ -14,6 +14,7 @@ jobs:
         run: |
 
           echo ${{ github.event }}
+          echo ${{ github.event_name }}
           echo ${{ github.event.pull_request }}
           echo ${{ github.event.pull_request.head }}
           echo ${{ github.event.pull_request.head.repo }}
