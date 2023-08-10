@@ -16,6 +16,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Actions"
           touch tests
           git add tests
           git checkout -b new-branch
