@@ -1,24 +1,19 @@
 ---
-name: Trigger release and bump version
+name: echo github context
 
-on: workflow_dispatch
+on:
+  pull_request:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out
-        uses: actions/checkout@v3
-        # with:
-          # token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Tag and push tag for triggering release
+      - name: Echo context
         run: |
-          git tag test
-          git push origin test
 
-      - name: Bump version for new development
-        run: |
-          touch test
-          git add .
-          git push origin main
+          echo ${{ github.event }}
+          echo ${{ github.event.pull_request }}
+          echo ${{ github.event.pull_request.head }}
+          echo ${{ github.event.pull_request.head.repo }}
+          echo ${{ github.event.pull_request.head.repo.fork }}
